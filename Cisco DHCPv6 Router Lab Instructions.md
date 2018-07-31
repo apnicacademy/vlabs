@@ -1,13 +1,11 @@
-![](apnic_logo.png)
-# LAB2: Stateless DHCPv6
+!(apnic_logo.png)
+# Cisco DHCPv6 Router Lab 
 
 ###Lab Environment
-Please continue from the previous lab (SLAAC)
 	
-* The lab topology still has:
-	* 1x7206VXR router
-	* 1xCisco IOU switch
-	* 2xUbuntu VMs
+* This lab topology has:
+	* 1xCisco CSR1000V Router
+	* 2xLubuntu VMs
 	
       
 
@@ -58,7 +56,7 @@ Please continue from the previous lab (SLAAC)
 1. The switch configuration is same as before (no changes necessary)
 
 			
-###The Client VMs (Ubuntu)
+###The Client VMs (Lubuntu)
 		
 5. Toogle the interface enp0s3 
 
