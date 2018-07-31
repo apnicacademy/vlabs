@@ -1,4 +1,5 @@
-!(apnic_logo.png)
+![](apnic_logo.png)
+
 # Cisco DHCPv6 Router Lab 
 
 ###Lab Environment
