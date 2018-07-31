@@ -1,23 +1,11 @@
 ![](apnic_logo.png)
-# LAB1: SLAAC (Stateless Address Autoconfig)
+# Cisco SLAAC Router Lab 
 
 ###Lab Environment
-Open the GNS3 project file:  
-
-	btnog5_SLAAC.gns3
 	
 * The lab topology has:
-	* 1x7206VXR router
-	* 1xCisco IOU switch
-	* 2xUbuntu VMs
-	
-* Basic GNS3 setup: 	
-	* For OS X (Mac), since we are running GNS3 1.5.3, you need to type your admin password to set the permission on uBridge only (to avoid running everything as root).
- 
-	* start the devices one by one (not to overwhelm your host machines)
-		* start with router R1 and configure as below.
-		* then start IOU switch and configure as below.
-		* and finally start the client PCs (Ubuntu VMs)      
+	* 1xCSR1000V router
+	* 2xLUBUNTU VMs    
 
 ### Configure the router:
 ** When you start the router, it might ask you `Would you like to enter the initial config dialog? [yes/no]`. Please type `no` and proceed.
@@ -72,45 +60,13 @@ OR
 			
 		wr	
 
-### Configure the switch:
-1. The switch configuration is very basic (only to connect the user LAN to the router)
-	* IOS on Unix (IOU) has all interfaces in half-duplex
-	* interfaces are not Layer2 by default 
-
-			interface range eth0/0-2
-			 switchport				!forcing it to be a L2 port
-			 duplex full			!full duplex
-				
-	* Configure the port connecting to the router R1 as trunk (eth0/0)
-
-			interface eth0/0
-			 description link to R1
-			 switchport trunk encapsulation dot1q
-			 switchport mode trunk
-			 switchport nonegotiate		!disable DTP negotiation
-
-	
-	* Configure the ports where clients are connected as access ports (VLAN100)
-
-			interface range eth0/1-2
-			 switchport mode access
-			 switchport access vlan 100
-	
-	* Save your config
-
-			wr
-	
-	* verify the switch configuration
 			
-			sh interfaces trunk 	!make sure the trunk carries all VLANs and are in forwarding state
-			sh vlan brief			!check the vlan database
-			
-###The Client VM (Ubuntu-1)
+###The Client VM (Lubuntu-1)
 		
-5. Turn ON (start) both the VMs (Ubuntu_1 and 2). You should be logged in automatically (username and password below)
+5. Turn ON (start) both the VMs (Lubuntu_1 and 2). You should be logged in automatically (username and password below)
 
 		username: apnic
-		password: training
+		password: root
 		
 6. Verify that the interface enp0s3 is UP and has computed the IPv6 address using SLAAC
 			
